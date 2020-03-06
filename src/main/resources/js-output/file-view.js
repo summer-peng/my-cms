@@ -90,10 +90,10 @@
 /*!**************************************************!*\
   !*** ./src/main/resources/js/file-view/index.js ***!
   \**************************************************/
-/*! no static exports found */
+/*! no exports provided */
 /***/ (function(module, exports) {
 
-eval("function add(){\n    return 1+1;\n}\n\n//# sourceURL=webpack:///./src/main/resources/js/file-view/index.js?");
+eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nError: ENOENT: no such file or directory, open '/Users/summer.peng/Documents/summer-workspace/cms/src/main/resources/js/file-view/index.js'\");\n\n//# sourceURL=webpack:///./src/main/resources/js/file-view/index.js?");
 
 /***/ }),
 

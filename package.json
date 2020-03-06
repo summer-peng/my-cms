@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-local": "NODE_ENV=local webpack --progress"
+    "build-local": "NODE_ENV=local webpack --progress --watch"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,13 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "bootstrap": "^4.4.1",
-    "react": "^16.12.0"
+    "jquery": "^3.4.1",
+    "react": "^16.12.0",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.0",
+    "vue-template-compiler": "^2.6.11"
   }
 }

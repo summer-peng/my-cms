@@ -1,7 +1,16 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 const fs = require("fs");
-const sourcePath = "./src/main/resources/js";
+const sourcePath = "./src/main/resources/static/js";
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
+
+let vueVersion = '';
+if(process.env['vue'] && process.env.vue.trim() === 'debug'){
+	vueVersion = 'vue.js';
+}else{
+	vueVersion = 'vue.min.js';
+}
 
 let entry = {};
 
@@ -18,29 +27,38 @@ Object.keys(entry).forEach((key, index) => {
     console.log("========>" + entry[key]);
 });
 
-const outputPath = path.resolve(__dirname, "/src/main/resources/js-output");
-console.log(`output:${outputPath}`);
-
 module.exports = {
     entry,
-/*    module: {
+    module: {
         rules:[{
-            test : /\.(jsx|js)$/,
-            exclude : /(node_modules|taiwantrade-profile)/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['babel-preset-env']
-                }
-            }
-        }]
-    },*/
+        	test: /\.vue$/,
+        	loader: "vue-loader"
+        },
+        {
+            test: /\.js$/,
+            loader: "babel-loader"
+        },
+        {
+            test: /\.css$/,
+            use: [
+              "vue-style-loader",
+              'css-loader'
+            ]
+         }
+        ]
+    },
     mode: "development",
     output: {
         filename: "[name].js",
-        path: __dirname + "/src/main/resources/js-output",
+        path: __dirname + "/src/main/resources/static/js-output",
     },
+	resolve: {
+		alias: {
+			'vue$': __dirname + '/node_modules/vue/dist/' + vueVersion
+		}
+	},
     plugins: [
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new VueLoaderPlugin()
     ]
 };
