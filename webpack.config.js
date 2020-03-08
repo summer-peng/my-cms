@@ -1,17 +1,17 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 const fs = require("fs");
-const sourcePath = "./src/main/resources/static/js";
+const sourcePath = "./src/main/resources/static/js/page";
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const webpack = require('webpack');
 
-
-let vueVersion = '';
-if(process.env['vue'] && process.env.vue.trim() === 'debug'){
-	vueVersion = 'vue.js';
-}else{
-	vueVersion = 'vue.min.js';
-}
-
+//let vueVersion = '';
+//if(process.env['vue'] && process.env.vue.trim() === 'debug'){
+//	vueVersion = 'vue.js';
+//}else{
+//	vueVersion = 'vue.min.js';
+//}
+//console.log("vueVersion:" + vueVersion);
 let entry = {};
 
 let srcFolders = fs.readdirSync(sourcePath);
@@ -54,11 +54,15 @@ module.exports = {
     },
 	resolve: {
 		alias: {
-			'vue$': __dirname + '/node_modules/vue/dist/' + vueVersion
+			'vue$': __dirname + '/node_modules/vue/dist/vue.js'
 		}
 	},
     plugins: [
         new CleanWebpackPlugin(),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new webpack.SourceMapDevToolPlugin({
+		  filename: '[name].js.map',
+		  exclude: ['vendor.js']
+		})
     ]
 };

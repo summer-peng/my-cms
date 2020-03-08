@@ -7,22 +7,30 @@
 	href="/css/bootstrap-4.4.1-dist/css/bootstrap.min.css" />
 </head>
 <style type="text/css">
-	.container-fluid {
-		max-width: 1200px;
+	.custom-breadcrumb {
+		background-color:initial;
 	}
-	
-	#root {
-		margin-top: 50px;
+
+	.index-introduction {
+		width: 100%;
+		background-color: #f3f3f3;
+	}
+
+	.index-introduction-body {
+		margin: 0 auto;
+	}
+	.index-introduction-body img {
+		max-height: 200px;
 	}
 </style>
 <body>
-	<div class="container-fluid">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<header>
+		<nav class="navbar navbar-dark bg-dark">
 		  <a class="navbar-brand" href="#">Navbar</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
-		
+
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
 		      <li class="nav-item active">
@@ -52,12 +60,23 @@
 		    </form>
 		  </div>
 		</nav>
+	</header>
+	<div class="container-fluid">
+		<!-- <article class="index-introduction">
+			<div class="container">
+				<div class="index-introduction-body">
+					<h3>A team of highly trained monkeys could learn it.</h3>
+					<img alt="monkey" src="/images/monkey.png">
+				</div>
+			</div>
+		</article>-->
 		<!-- vue root -->
-		<div id="root">
+		<main id="root">
+			<breadcrumbs :title-list="['article', 'index']"></breadcrumbs>
 			<list></list>
-		</div>
+	    </main>
 	</div>
 </body>
 <script type="text/javascript" src="/third-party-js/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="/js-output/file-view.js"></script>
+<script type="text/javascript" src="/js-output/list.js"></script>
 </html>
