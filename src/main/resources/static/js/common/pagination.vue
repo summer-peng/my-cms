@@ -9,7 +9,7 @@
 				<span class="sr-only">Previous</span>
 			</a>
 		</li>
-		<template v-if="currentPage <= 6">
+		<template v-if="currentPage < 6">
 			<li v-for="n in totalPage"
 					v-if="n<= 6" class="page-item"
 					:class="{active: currentPage == n}"
@@ -18,12 +18,12 @@
 			</li>
 			<template v-if="totalPage > 6">
 				<li class="paging-ellipsis">....</li>
-				<li @click="changePage(this.totalPage)">
-					<a class="page-link">{{this.totalPage}}</a>
+				<li @click="changePage(totalPage)">
+					<a class="page-link">{{totalPage}}</a>
 				</li>
 			</template>
 		</template>
-		<template v-else-if="currentPage >= (totalPage - 6)">
+		<template v-else-if="currentPage > (totalPage - 5)">
 			<li @click="changePage(1)">
 				<a class="page-link">1</a>
 			</li>
@@ -78,7 +78,6 @@
 		},
 		methods: {
 			changePage: function(page){
-				debugger;
 				if(page <= 0){
 					page = 1;
 				}

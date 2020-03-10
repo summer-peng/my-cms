@@ -8,7 +8,7 @@
 					<h5 class="mb-1">{{row.title}}</h5>
 					<small>
 						<span>Post date:</span>
-						<time>{{row.postDate}}</time>
+						<custom-time :time="row.postDate"></custom-time>
 					</small>
 				</div>
 				<p class="mb-1">{{row.description}}</p>
@@ -34,9 +34,10 @@
 import { getArticle, getPagedArticle } from "../../web-service/article-service.js";
 import NoResultFound from "../../common/no-result-found.vue";
 import Pagination from "../../common/pagination.vue";
+import CustomTime from "../../common/time.vue";
 
 export default {
-	components: {NoResultFound, Pagination},
+	components: {NoResultFound, Pagination, CustomTime},
 	data(){
 		return {
 			pageResult: {
@@ -57,7 +58,11 @@ export default {
 		changePage: function(page){
 			this.loading = true;
 			getPagedArticle(page, this.pageResult.size).then((data)=>{
-				this.pageResult = data || [];
+				this.pageResult = data || {
+					rows:[],
+					totalPage: 10,
+					currentPage:1
+				};
 				this.loading = false;
 			});
 		}

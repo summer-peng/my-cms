@@ -2,9 +2,70 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index</title>
+<title>main page</title>
+<link rel="stylesheet" type="text/css"
+	href="/css/bootstrap-4.4.1-dist/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/third-party-js/slick-1.8.1/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="/third-party-js/slick-1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="/js-output/index.css" />
+<style type="text/css">
+	.custom-breadcrumb {
+		background-color:initial;
+	}
+
+	.index-introduction {
+		display: inline-block;
+		width: 100%;
+		background-color: #f3f3f3;
+	}
+
+	.index-introduction-body {
+		display: inline-block;
+		margin: 0 auto;
+	}
+
+	.index-introduction-body > * {
+		display: inline-block;
+	}
+
+	.index-introduction-body img {
+		max-height: 200px;
+	}
+
+	.page-footer {
+		background-color: #f3f3f3;
+	}
+	
+	.slick-content {
+		min-height: 100px;
+		background-color: #ffc0cb;
+	}
+	
+	.slick-content h3 {
+		text-align: center;
+    	line-height: 100px;
+	}
+</style>
 </head>
 <body>
-	<div>Hello world!</div>
+	<section th:include="/common/header.html"></section>
+	<section class="container-fluid">
+		<article class="index-introduction">
+			<div class="container">
+				<div class="index-introduction-body">
+					<h3>A team of highly trained monkeys could learn it.</h3>
+					<img alt="monkey" src="/images/monkey.png">
+				</div>
+			</div>
+		</article>
+		<main id="root" class="container">
+			<breadcrumbs></breadcrumbs>
+			<main-page></main-page>
+		</main>
+		<!-- <section th:replace="/common/footer.html"></section> -->
+	</section>
+	<script type="text/javascript" src="/third-party-js/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/third-party-js/slick-1.8.1/slick/slick.min.js"></script>
+	<script type="text/javascript" src="/js-output/index.js"></script>
 </body>
 </html>
