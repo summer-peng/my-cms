@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test page</title>
+<link rel="stylesheet" type="text/css"
+	href="/css/bootstrap-4.4.1-dist/css/bootstrap.min.css" />
+</head>
+<style type="text/css">
+	.custom-breadcrumb {
+		background-color:initial;
+	}
+
+	.index-introduction {
+		width: 100%;
+		background-color: #f3f3f3;
+	}
+
+	.index-introduction-body {
+		margin: 0 auto;
+	}
+	.index-introduction-body img {
+		max-height: 200px;
+	}
+
+	.paging-ellipsis {
+		margin: 0px 10px;
+	}
+
+	.pagination .page-item {
+		cursor: pointer;
+	}
+
+	.pagination {
+		justify-content: center;
+		margin-top: 10px;
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	.page-footer {
+		background-color: #f3f3f3;
+	}
+</style>
+<body>
+	<section th:replace="/common/header.html"></section>
+	<section class="container-fluid">
+		<!-- vue root -->
+		<main id="root" class="container">
+			<test></test>
+		</main>
+		<section th:replace="/common/footer.html"></section>
+	</section>
+	<script type="text/javascript" src="/third-party-js/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/js-output/test.js"></script>
+</body>
+</html>

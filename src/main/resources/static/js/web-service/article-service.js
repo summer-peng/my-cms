@@ -34,7 +34,17 @@ export const getPagedArticle = (currentPage, size) => {
 		});
 	});
 }
+
+export const getName = () => {
+	return new Promise((resolve, reject)=>{
+		setTimeout(function(){
+			resolve("Hello world!");
+		}, 1000);
+	});
+}
+
 export default {
 	getArticle,
-	getPagedArticle
+	getPagedArticle,
+	getName
 }

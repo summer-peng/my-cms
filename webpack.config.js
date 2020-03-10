@@ -4,6 +4,7 @@ const fs = require("fs");
 const sourcePath = "./src/main/resources/static/js/page";
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 //let vueVersion = '';
 //if(process.env['vue'] && process.env.vue.trim() === 'debug'){
@@ -40,11 +41,9 @@ module.exports = {
         },
         {
             test: /\.css$/,
-            use: [
-              "vue-style-loader",
-              'css-loader'
-            ]
-         }
+            //process.env.NODE_ENV !== "production" ? "vue-style-loader" : : MiniCssExtractPlugin.loader
+            use: [MiniCssExtractPlugin.loader, "css-loader"],
+          }
         ]
     },
     mode: "development",
@@ -60,9 +59,24 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new VueLoaderPlugin(),
+        new MiniCssExtractPlugin({
+        	filename: "[name].css"
+        }),
         new webpack.SourceMapDevToolPlugin({
 		  filename: '[name].js.map',
 		  exclude: ['vendor.js']
 		})
-    ]
+	],
+	optimization: {
+	splitChunks: {
+		cacheGroups: {
+			index: {
+				name: 'index',
+				test: /[\\/]node_modules[\\/].*\.vue$/,
+				chunks: 'all',
+				enforce: true,
+			},
+		},
+	},
+},
 };
