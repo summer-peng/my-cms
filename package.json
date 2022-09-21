@@ -34,6 +34,6 @@
     "vue-loader": "^15.9.0",
     "vue-loading-overlay": "^3.3.2",
     "vue-template-compiler": "^2.6.11",
-    "vuetify": "^2.2.15"
+    "vuetify": "^2.6.10"
   }
 }
